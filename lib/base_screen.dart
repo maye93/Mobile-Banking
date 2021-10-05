@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:practice/dashboard.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:practice/transfer.dart';
+import 'package:practice/authentication.dart';
+import 'package:practice/login_screen.dart';
 
 class BaseScreen extends StatefulWidget {
   const BaseScreen({Key? key}) : super(key: key);
@@ -15,7 +18,7 @@ class _BaseScreenState extends State<BaseScreen> {
   static const List<Widget> _widgetOptions = <Widget>[
     DashBoard(),
     DashBoard(),
-    DashBoard(),
+    TransferMoneyScreen(),
     DashBoard(),
   ];
   @override
