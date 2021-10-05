@@ -16,6 +16,7 @@ class _BaseScreenState extends State<BaseScreen> {
     DashBoard(),
     DashBoard(),
     DashBoard(),
+    DashBoard(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -30,9 +31,11 @@ class _BaseScreenState extends State<BaseScreen> {
           unselectedItemColor: Colors.grey,
           items: [
             BottomNavigationBarItem(
-              icon: Icon(FontAwesomeIcons.piggyBank),
-              label: "Deposit",
+              icon: Icon(FontAwesomeIcons.home),
+              label: "Dashboard",
             ),
+            BottomNavigationBarItem(
+                icon: Icon(FontAwesomeIcons.piggyBank), label: "Deposit"),
             BottomNavigationBarItem(
                 icon: Icon(FontAwesomeIcons.handHoldingUsd), label: "Transfer"),
             BottomNavigationBarItem(
