@@ -1,5 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:practice/DashBoard.dart';
+import 'package:practice/base_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({Key? key}) : super(key: key);
@@ -115,7 +119,10 @@ class LoginScreen extends StatelessWidget {
                         FocusScope.of(context).unfocus();
                         if (username.text == "admin" &&
                             password.text == "admin") {
-                          print("hhehe");
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => BaseScreen()));
                         } else {
                           ScaffoldMessenger.of(context)
                               .showSnackBar(loginError);
