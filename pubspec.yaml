@@ -29,7 +29,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  font_awesome_flutter: ^9.1.0
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -68,9 +67,11 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/pics/
-    # - assets/bank_logo.png
+    - assets/bank_logo.png
+    - assets/cash.jpg
+    - assets/beach.gif
   #   - images/a_dot_ham.jpeg
+  
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
