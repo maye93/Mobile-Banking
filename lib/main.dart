@@ -36,7 +36,7 @@ class LoginScreen extends StatelessWidget {
                 color: const Color(0xFF231D25),
               ),
 
-            ///////////////////////// CARD /////////////////////////
+            ///////////////////////// LOGO /////////////////////////
               Material(
                 elevation: 1000,
                 color: Colors.transparent,
