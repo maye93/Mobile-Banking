@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:practice/widgets/transaction_card.dart';
-import 'package:practice/data/transaction_data.dart';
+import 'package:practice/transaction_card.dart';
+import 'package:practice/transaction_data.dart';
 import 'package:intl/intl.dart';
+import 'transaction_card.dart';
+import 'transaction_data.dart';
 import 'DatabaseAccounts.dart';
 
 class GetAccount extends AdminAccount{
@@ -191,13 +193,14 @@ class _DashBoardState extends State<DashBoard> {
               
             //////////////////// RECENT TRANSACTIONS ///////////////////
               Positioned( 
-                top: 525, left: 20,
-                child: Text("Recent Transactions",
+                top: 530, left: 20,
+                child: Text("RECENT TRANSACTIONS",
                   style: TextStyle(
                       decoration: TextDecoration.none,
                       fontFamily: 'Glacial Bold',
-                      color: const Color(0xFFE58B8E),
-                      fontSize: 25,
+                      color: const Color(0xFF231D25),
+                      fontSize: 20,
+                      letterSpacing: 2,
                   )
                 )
               ),
