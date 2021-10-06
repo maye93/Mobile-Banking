@@ -84,7 +84,10 @@ class LoginScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(40)
                       ),
                       hintText: 'Username',
-                      hintStyle: TextStyle(color: Colors.grey),
+                      hintStyle: TextStyle(
+                        color: Colors.grey, 
+                        fontFamily: 'Glacial',
+                      ),
                       fillColor: Colors.white,
                       filled: true,
                       prefixIcon: Icon(
@@ -110,7 +113,10 @@ class LoginScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(40)
                       ),
                       hintText: 'Password',
-                      hintStyle: TextStyle(color: Colors.grey),
+                      hintStyle: TextStyle(
+                        color: Colors.grey, 
+                        fontFamily: 'Glacial',
+                      ),
                       fillColor: Colors.white,
                       filled: true,
                       prefixIcon: Icon(
@@ -128,7 +134,11 @@ class LoginScreen extends StatelessWidget {
                 child: SizedBox(
                   height: 50, width: 150,
                   child: ElevatedButton(
-                    child: Text('Login'),
+                    child: Text('Login',
+                      style: TextStyle(
+                      fontFamily: 'Glacial',
+                      )
+                    ),
                     onPressed: () {
                       FocusScope.of(context).unfocus();
                       if (username.text == Account().account() &&
