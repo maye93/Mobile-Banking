@@ -24,13 +24,13 @@ class TransferMoneyScreen extends StatelessWidget{
           child: Stack(
             alignment: Alignment.center,
             children: [
-              ////////////////////// BACKGROUND //////////////////////
+            ////////////////////// BACKGROUND //////////////////////
               Container(
                 height: MediaQuery.of(context).size.height, width: MediaQuery.of(context).size.width,
                 color: const Color(0xFF231D25),
               ),
               
-              ///////////////////////// TITLE /////////////////////////
+            ///////////////////////// TITLE /////////////////////////
               Positioned( 
                 top: 120,
                 child: Text("TRANSFER MONEY",
@@ -44,7 +44,7 @@ class TransferMoneyScreen extends StatelessWidget{
                 )
               ),
 
-              ////////////////////// WHITE BOX ///////////////////////
+            ////////////////////// WHITE BOX ///////////////////////
               Positioned(
                 top: 170,
                 child: Container(
@@ -59,7 +59,7 @@ class TransferMoneyScreen extends StatelessWidget{
                 )
               ),
 
-              ///////////////////////// CARD /////////////////////////
+            ///////////////////////// CARD /////////////////////////
               Positioned(
                 top: 120,
                 child: Material(
@@ -77,7 +77,7 @@ class TransferMoneyScreen extends StatelessWidget{
                 )
               ),
 
-              /////////////////////// BALANCE ////////////////////////
+            /////////////////////// BALANCE ////////////////////////
               Positioned( 
                 top: 270, left: 55,
                 child: Text("PHP "+f.format(GetBalance().balance()).toString(),
@@ -90,7 +90,7 @@ class TransferMoneyScreen extends StatelessWidget{
                 )
               ),
 
-              //////////////////// TRANSFER AMOUNT ////////////////////
+            //////////////////// TRANSFER AMOUNT ////////////////////
               Positioned( 
                 top: 350,
                 child: Text("Transfer Amount",
@@ -103,7 +103,7 @@ class TransferMoneyScreen extends StatelessWidget{
                 )
               ),
               
-              /////////////////////////// PHP //////////////////////////
+            /////////////////////////// PHP //////////////////////////
               Positioned( 
                 top: 400, left: 30,
                 child: Text("PHP",
@@ -116,7 +116,7 @@ class TransferMoneyScreen extends StatelessWidget{
                 )
               ),
               
-              /////////////////////// PHP TEXTFIELD ////////////////////
+            /////////////////////// PHP TEXTFIELD ////////////////////
               Positioned( 
                 top: 390, left: 80,
                 child: Container(
@@ -135,7 +135,7 @@ class TransferMoneyScreen extends StatelessWidget{
                 )
               ),
 
-              /////////////////////// TRANSFER TO //////////////////////
+            /////////////////////// TRANSFER TO //////////////////////
               Positioned( 
                 top: 450,
                 child: Text("Transfer To",
@@ -148,7 +148,7 @@ class TransferMoneyScreen extends StatelessWidget{
                 )
               ),
 
-              ////////////////// TRANSFER TO TEXTFIELD //////////////////
+            ////////////////// TRANSFER TO TEXTFIELD //////////////////
               Positioned( 
                 top: 490,
                 child: Container(
@@ -169,7 +169,7 @@ class TransferMoneyScreen extends StatelessWidget{
                 )
               ),
 
-              ////////////////////////// NOTE ///////////////////////////
+            ////////////////////////// NOTE ///////////////////////////
               Positioned( 
                 top: 550,
                 child: Text("Note",
@@ -182,7 +182,7 @@ class TransferMoneyScreen extends StatelessWidget{
                 )
               ),
 
-              ////////////////////// NOTE TEXTFIELD /////////////////////
+            ////////////////////// NOTE TEXTFIELD /////////////////////
               Positioned( 
                 top: 590,
                 child: SizedBox(
@@ -201,7 +201,7 @@ class TransferMoneyScreen extends StatelessWidget{
                 )
               ),
 
-              ////////////////////// CONFIRM BUTTON /////////////////////
+            ////////////////////// CONFIRM BUTTON /////////////////////
               Positioned( 
                 top: 710,
                 child: SizedBox(
