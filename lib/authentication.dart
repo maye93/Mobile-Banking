@@ -47,7 +47,11 @@ class Authentication_screen extends StatelessWidget {
                 child: SizedBox(
                   height: 50, width: 150,
                   child: ElevatedButton(
-                    child: Text('Sign In'),
+                    child: Text('Sign In',
+                      style: TextStyle(
+                      fontFamily: 'Glacial',
+                      )
+                    ),
                     onPressed: () {
                       Navigator.push(
                         context,
@@ -74,7 +78,11 @@ class Authentication_screen extends StatelessWidget {
                 child: SizedBox(
                   height: 50, width: 150,
                   child: ElevatedButton(
-                    child: Text('Sign Up'),
+                    child: Text('Sign Up',
+                      style: TextStyle(
+                      fontFamily: 'Glacial',
+                      )
+                    ),
                     onPressed: () {
                       ScaffoldMessenger.of(context)
                         .showSnackBar(signUpError);
