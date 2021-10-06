@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:practice/data/card_data.dart';
-import 'package:practice/constants/app_textstyle.dart';
-import 'package:practice/widgets/my_card.dart';
 import 'package:practice/widgets/transaction_card.dart';
 import 'package:practice/data/transaction_data.dart';
 import 'package:intl/intl.dart';
