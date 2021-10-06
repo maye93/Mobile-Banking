@@ -36,7 +36,7 @@ class _DashBoardState extends State<DashBoard> {
       body: SingleChildScrollView(
         physics: ClampingScrollPhysics(),
         child: Padding(
-          padding: const EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(7.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -50,8 +50,8 @@ class _DashBoardState extends State<DashBoard> {
                       );
                     },
                     itemCount: myCards.length,
-                    shrinkWrap: true,
-                    scrollDirection: Axis.horizontal,
+                    // shrinkWrap: true,
+                    // scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
                       return MyCard(
                         card: myCards[index],
