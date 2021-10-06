@@ -2,11 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
-int balance = 100000;
-var f = NumberFormat('#,###,###');
+import 'DatabaseAccounts.dart';
 
-class TransferMoneyScreen extends StatelessWidget {
+class GetMoney extends AdminAccount{
+  @override
+  balance() {
+    return super.balance();
+  }
+}
+
+var f = NumberFormat('###,###');
+
+class TransferMoneyScreen extends StatelessWidget{
   const TransferMoneyScreen({Key? key}) : super(key: key);
+
+  // b = privBalance;
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +84,7 @@ class TransferMoneyScreen extends StatelessWidget {
               /////////////////////// BALANCE ////////////////////////
               Positioned( 
                 top: 270, left: 55,
-                child: Text("PHP "+f.format(balance).toString(),
+                child: Text("PHP "+f.format(GetMoney().balance()).toString(),
                 style: TextStyle(
                   decoration: TextDecoration.none,
                   fontFamily: 'Glacial',
@@ -203,7 +213,7 @@ class TransferMoneyScreen extends StatelessWidget {
                   child: ElevatedButton(
                     child: Text('Confirm'),
                     onPressed: () {
-                      print('confirm');
+                      GetMoney().balance();
                     },
                     style: ButtonStyle(
                       shape: MaterialStateProperty.all(RoundedRectangleBorder(
