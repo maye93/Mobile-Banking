@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/services.dart';
-import 'DashBoard.dart';
+// import 'DashBoard.dart';
 int balance = 100000;
 
 class TransferMoneyScreen extends StatelessWidget {
@@ -10,9 +10,12 @@ class TransferMoneyScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
+
   return Scaffold(
     body: Center(
       child: SingleChildScrollView(
+        physics: NeverScrollableScrollPhysics(),
+        reverse: true,
         child: Stack(
           alignment: Alignment.center,
           children: [
@@ -24,7 +27,7 @@ class TransferMoneyScreen extends StatelessWidget {
             
             ///////////////////////// TEXT /////////////////////////
               Positioned( 
-                top: 70,
+                top: 120,
                 child: Text("TRANSFER MONEY",
                 style: TextStyle(
                   decoration: TextDecoration.none,
@@ -38,7 +41,7 @@ class TransferMoneyScreen extends StatelessWidget {
 
             ////////////////////// WHITE BOX ///////////////////////
               Positioned(
-                top: 120,
+                top: 170,
                 child: Container(
                   height: 700, width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
@@ -53,7 +56,7 @@ class TransferMoneyScreen extends StatelessWidget {
 
             ///////////////////////// CARD /////////////////////////
               Positioned(
-                top: 70,
+                top: 120,
                 child: Material(
                   elevation: 1000,
                   color: Colors.transparent,
@@ -71,7 +74,7 @@ class TransferMoneyScreen extends StatelessWidget {
 
             /////////////////////// BALANCE ////////////////////////
               Positioned( 
-                top: 220, left: 60,
+                top: 270, left: 60,
                 child: Text("PHP "+balance.toString(),
                 style: TextStyle(
                   decoration: TextDecoration.none,
@@ -84,7 +87,7 @@ class TransferMoneyScreen extends StatelessWidget {
 
             //////////////////// TRANSFER AMOUNT ////////////////////
               Positioned( 
-                top: 300,
+                top: 350,
                 child: Text("Transfer Amount",
                   style: TextStyle(
                     decoration: TextDecoration.none,
@@ -97,7 +100,7 @@ class TransferMoneyScreen extends StatelessWidget {
             
             /////////////////////////// PHP //////////////////////////
               Positioned( 
-                top: 350, left: 30,
+                top: 400, left: 30,
                 child: Text("PHP",
                   style: TextStyle(
                     decoration: TextDecoration.none,
@@ -110,7 +113,7 @@ class TransferMoneyScreen extends StatelessWidget {
             
             /////////////////////// PHP TEXTFIELD ////////////////////
               Positioned( 
-                top: 340, left: 80,
+                top: 390, left: 80,
                 child: Container(
                   height: 100, width: 280,
                   child: TextField(
@@ -129,7 +132,7 @@ class TransferMoneyScreen extends StatelessWidget {
 
             /////////////////////// TRANSFER TO //////////////////////
               Positioned( 
-                top: 400,
+                top: 450,
                 child: Text("Transfer To",
                   style: TextStyle(
                     decoration: TextDecoration.none,
@@ -142,7 +145,7 @@ class TransferMoneyScreen extends StatelessWidget {
 
             ////////////////// TRANSFER TO TEXTFIELD //////////////////
               Positioned( 
-                top: 440,
+                top: 490,
                 child: Container(
                   height: 100, width: 300,
                   child: TextFormField(
@@ -163,7 +166,7 @@ class TransferMoneyScreen extends StatelessWidget {
 
             ////////////////////////// NOTE ///////////////////////////
               Positioned( 
-                top: 500,
+                top: 550,
                 child: Text("Note",
                   style: TextStyle(
                     decoration: TextDecoration.none,
@@ -176,7 +179,7 @@ class TransferMoneyScreen extends StatelessWidget {
 
             ////////////////////// NOTE TEXTFIELD /////////////////////
               Positioned( 
-                top: 540,
+                top: 590,
                 child: SizedBox(
                   height: 300, width: 300,
                   child: TextFormField(
@@ -195,7 +198,7 @@ class TransferMoneyScreen extends StatelessWidget {
 
             ////////////////////// CONFIRM BUTTON /////////////////////
               Positioned( 
-                top: 660,
+                top: 710,
                 child: SizedBox(
                   height: 50, width: 250,
                   child: ElevatedButton(
@@ -214,29 +217,30 @@ class TransferMoneyScreen extends StatelessWidget {
                 )
               ),
 
-              ////////////////////// CANCEL BUTTON /////////////////////
-              Positioned( 
-                top: 720,
-                child: SizedBox(
-                  height: 50, width: 250,
-                  child: ElevatedButton(
-                    child: Text('Cancel'),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => DashBoard()),
-                      );
-                    },
-                    style: ButtonStyle(
-                      shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30))),
-                      padding: MaterialStateProperty.all(EdgeInsets.all(15)),
-                      elevation: MaterialStateProperty.all(0),
-                      backgroundColor:
-                          MaterialStateProperty.all(const Color(0xFF231D25))),
-                  )
-                )
-              )
+              // ////////////////////// CANCEL BUTTON /////////////////////
+              // Positioned( 
+              //   top: 720,
+              //   child: SizedBox(
+              //     height: 50, width: 250,
+              //     child: ElevatedButton(
+              //       child: Text('Cancel'),
+              //       onPressed: () {
+              //         Navigator.push(
+              //           context,
+              //           MaterialPageRoute(builder: (context) => DashBoard()),
+              //         );
+              //       },
+              //       style: ButtonStyle(
+              //         shape: MaterialStateProperty.all(RoundedRectangleBorder(
+              //             borderRadius: BorderRadius.circular(30))),
+              //         padding: MaterialStateProperty.all(EdgeInsets.all(15)),
+              //         elevation: MaterialStateProperty.all(0),
+              //         backgroundColor:
+              //             MaterialStateProperty.all(const Color(0xFF231D25))),
+              //     )
+              //   )
+              // ),
+              
             ]
           )
         )
