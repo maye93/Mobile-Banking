@@ -137,7 +137,7 @@ class _DashBoardState extends State<DashBoard> {
 
             ////////////////////// CARD NUMBER ///////////////////////
               Positioned( 
-                top: 340, left: 35,
+                top: 340, left: 40,
                 child: Text(GetCard().card(),
                   style: TextStyle(
                     decoration: TextDecoration.none,
@@ -151,7 +151,7 @@ class _DashBoardState extends State<DashBoard> {
 
             ////////////////////// CARD EXPIRY ///////////////////////
               Positioned( 
-                top: 375, left: 35,
+                top: 375, left: 40,
                 child: Text(GetExp().exp(),
                   style: TextStyle(
                     decoration: TextDecoration.none,
