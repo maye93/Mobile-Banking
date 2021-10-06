@@ -21,35 +21,44 @@ class _BaseScreenState extends State<BaseScreen> {
     TransferMoneyScreen(),
     DashBoard(),
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
+      body: IndexedStack(
+        index: _selectedIndex,
+        children: _widgetOptions,
       ),
       bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          selectedItemColor: Color(0xff231D25),
-          unselectedItemColor: Colors.grey,
-          items: [
-            BottomNavigationBarItem(
-              icon: Icon(FontAwesomeIcons.home),
-              label: "Dashboard",
-            ),
-            BottomNavigationBarItem(
-                icon: Icon(FontAwesomeIcons.piggyBank), label: "Deposit"),
-            BottomNavigationBarItem(
-                icon: Icon(FontAwesomeIcons.handHoldingUsd), label: "Transfer"),
-            BottomNavigationBarItem(
-                icon: Icon(FontAwesomeIcons.moneyBillWave), label: "Withdraw"),
-          ],
-          currentIndex: _selectedIndex,
-          onTap: (int index) {
-            setState(() {
-              _selectedIndex = index;
-            });
-          }),
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: Color(0xff231D25),
+        
+        selectedIconTheme: IconThemeData(
+          color: const Color(0xFFFE971A)),
+        selectedItemColor: const Color(0xFFFE971A),
+
+        unselectedIconTheme: IconThemeData(
+          color: Colors.grey),
+        unselectedItemColor: Colors.grey,
+
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(FontAwesomeIcons.home),
+            label: "Dashboard",
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(FontAwesomeIcons.piggyBank), label: "Deposit"),
+          BottomNavigationBarItem(
+              icon: Icon(FontAwesomeIcons.handHoldingUsd), label: "Transfer"),
+          BottomNavigationBarItem(
+              icon: Icon(FontAwesomeIcons.moneyBillWave), label: "Withdraw"),
+        ],
+        currentIndex: _selectedIndex,
+        onTap: (int index) {
+          setState(() {
+            _selectedIndex = index;
+          });
+        }),
     );
   }
 }
