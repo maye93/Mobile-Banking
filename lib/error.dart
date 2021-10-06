@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'package:flutter/services.dart';
 
 class ErrorScreen extends StatelessWidget {
   const ErrorScreen({Key? key}) : super(key: key);
@@ -35,7 +34,6 @@ class ErrorScreen extends StatelessWidget {
                   )
                 )
               ),
-
 
             ///////////////////////// PICTURE ///////////////////////
               Positioned(
