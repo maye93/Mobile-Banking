@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:practice/login_screen.dart';
 
-
-
 class Authentication_screen extends StatelessWidget {
   Authentication_screen({Key? key}) : super(key: key);
-  final signUpError =
-      SnackBar(content: Text('Sign Up is not available at the moment'));
+  final signUpError = SnackBar(
+    content: Text('Sign Up is not available at the moment')
+  );
 
   @override
   Widget build(BuildContext context) {
