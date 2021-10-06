@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/services.dart';
-// import 'DashBoard.dart';
 int balance = 100000;
 
 class TransferMoneyScreen extends StatelessWidget {
@@ -9,7 +8,6 @@ class TransferMoneyScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
 
   return Scaffold(
     body: Center(
@@ -25,7 +23,7 @@ class TransferMoneyScreen extends StatelessWidget {
               color: const Color(0xFF231D25),
             ),
             
-            ///////////////////////// TEXT /////////////////////////
+            ///////////////////////// TITLE /////////////////////////
               Positioned( 
                 top: 120,
                 child: Text("TRANSFER MONEY",
@@ -216,31 +214,6 @@ class TransferMoneyScreen extends StatelessWidget {
                   )
                 )
               ),
-
-              // ////////////////////// CANCEL BUTTON /////////////////////
-              // Positioned( 
-              //   top: 720,
-              //   child: SizedBox(
-              //     height: 50, width: 250,
-              //     child: ElevatedButton(
-              //       child: Text('Cancel'),
-              //       onPressed: () {
-              //         Navigator.push(
-              //           context,
-              //           MaterialPageRoute(builder: (context) => DashBoard()),
-              //         );
-              //       },
-              //       style: ButtonStyle(
-              //         shape: MaterialStateProperty.all(RoundedRectangleBorder(
-              //             borderRadius: BorderRadius.circular(30))),
-              //         padding: MaterialStateProperty.all(EdgeInsets.all(15)),
-              //         elevation: MaterialStateProperty.all(0),
-              //         backgroundColor:
-              //             MaterialStateProperty.all(const Color(0xFF231D25))),
-              //     )
-              //   )
-              // ),
-              
             ]
           )
         )
