@@ -13,16 +13,24 @@ class GetMoney extends AdminAccount {
   }
 }
 
+class Variables {
+  static String moneyTransfer = "";
+  static int transferAccDetails = 0;
+  static String transferNotes = "";
+}
+
 var f = NumberFormat('###,###');
 
 class TransferMoneyScreen extends StatelessWidget {
   TransferMoneyScreen({Key? key}) : super(key: key);
 
   // var amount;
-  final UserTransferAmount = TextEditingController();
+  final userTransferAmount = TextEditingController();
+  final transferCardDetails = TextEditingController();
+  final transferNote = TextEditingController();
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   final InputError = SnackBar(content: Text('Invalid credentials'));
-  // AccountBalance acc = new AccountBalance();
+
   // b = privBalance;
 
   @override
@@ -126,7 +134,7 @@ class TransferMoneyScreen extends StatelessWidget {
                           height: 60,
                           width: 265,
                           child: TextFormField(
-                            controller: UserTransferAmount,
+                            controller: userTransferAmount,
                             validator: (value) {
                               if (value!.isEmpty) {
                                 return 'Please Specify amount';
@@ -168,6 +176,7 @@ class TransferMoneyScreen extends StatelessWidget {
                           height: 60,
                           width: 300,
                           child: TextFormField(
+                            controller: transferCardDetails,
                             validator: (value) {
                               if (value!.isEmpty) {
                                 return 'Must specify account number';
@@ -210,6 +219,7 @@ class TransferMoneyScreen extends StatelessWidget {
                             height: 300,
                             width: 300,
                             child: TextFormField(
+                              controller: transferNote,
                               textAlign: TextAlign.center,
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(),
@@ -233,12 +243,23 @@ class TransferMoneyScreen extends StatelessWidget {
                               onPressed: () {
                                 GetMoney().balance();
                                 if (_formkey.currentState!.validate()) {
+                                  Variables.moneyTransfer =
+                                      (double.parse(userTransferAmount.text)
+                                          .toStringAsFixed(2));
+                                  Variables.transferAccDetails =
+                                      int.parse(transferCardDetails.text);
+
+                                  if (transferNote.text.isEmpty) {
+                                    Variables.transferNotes =
+                                        "It looks like you haven't left a note...";
+                                  } else {
+                                    Variables.transferNotes = transferNote.text;
+                                  }
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
                                               ConfirmScreen()));
-                                  ;
                                 } else {
                                   InputError;
                                 }

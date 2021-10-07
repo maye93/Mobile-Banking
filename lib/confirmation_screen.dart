@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:practice/transfer.dart';
 // import 'package:practice/main.dart';
 
 class ConfirmScreen extends StatefulWidget {
@@ -11,7 +12,7 @@ class ConfirmScreen extends StatefulWidget {
 class _ConfirmScreenState extends State<ConfirmScreen> {
   List<Step> steps = [
     Step(
-      title: const Text("Step"),
+      title: const Text("Amount Confirmation"),
       isActive: true,
       state: StepState.complete,
       content: Column(
@@ -19,46 +20,72 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Container(
-            alignment: Alignment.topLeft,
-            child: Text("Blah blah",
-                style: TextStyle(
-                  decoration: TextDecoration.none,
-                  fontFamily: 'Glacial Bold',
-                  color: const Color(0xFFFE971A),
-                  fontSize: 25,
-                )),
-          ),
+              alignment: Alignment.topLeft,
+              child: Text("Transfer Amount",
+                  style: TextStyle(
+                    decoration: TextDecoration.none,
+                    fontFamily: 'Glacial Bold',
+                    color: const Color(0xFFFE971A),
+                    fontSize: 15,
+                  ))),
           Container(
               alignment: Alignment.topLeft,
-              child: Text("Blah blah",
+              child: Text("PHP " + Variables.moneyTransfer.toString(),
                   style: TextStyle(
                     decoration: TextDecoration.none,
                     fontFamily: 'Glacial Bold',
                     color: const Color(0xFFFE971A),
                     fontSize: 25,
-                  )))
+                  ))),
         ],
       ),
     ),
     Step(
         isActive: true,
         state: StepState.complete,
-        title: const Text("Test"),
+        title: const Text("Please Confirm Account Number"),
         content: Column(
           children: <Widget>[
             Container(
               alignment: Alignment.topLeft,
-              child: Text("Blah blah",
+              child: Text("Account Number",
                   style: TextStyle(
                     decoration: TextDecoration.none,
                     fontFamily: 'Glacial Bold',
                     color: const Color(0xFFFE971A),
-                    fontSize: 25,
+                    fontSize: 15,
                   )),
             ),
             Container(
                 alignment: Alignment.topLeft,
-                child: Text("Blah blah",
+                child: Text(Variables.transferAccDetails.toString(),
+                    style: TextStyle(
+                      decoration: TextDecoration.none,
+                      fontFamily: 'Glacial Bold',
+                      color: const Color(0xFFFE971A),
+                      fontSize: 25,
+                    )))
+          ],
+        )),
+    Step(
+        isActive: true,
+        state: StepState.complete,
+        title: const Text("Notes"),
+        content: Column(
+          children: <Widget>[
+            Container(
+              alignment: Alignment.topLeft,
+              child: Text("Notes: ",
+                  style: TextStyle(
+                    decoration: TextDecoration.none,
+                    fontFamily: 'Glacial Bold',
+                    color: const Color(0xFFFE971A),
+                    fontSize: 15,
+                  )),
+            ),
+            Container(
+                alignment: Alignment.topLeft,
+                child: Text(Variables.transferNotes,
                     style: TextStyle(
                       decoration: TextDecoration.none,
                       fontFamily: 'Glacial Bold',
