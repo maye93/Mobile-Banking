@@ -13,16 +13,27 @@ class TransactionModel {
 List<TransactionModel> myTransactions = [
   TransactionModel(
     date: "9/21",
-    mssg: "PHP 100,000 was added to your account.",
-    header: "Investment",
+    mssg: "PHP 100,000 was deposited to your account.",
+    header: "Deposited",
   ),
   TransactionModel(
     date: "9/20",
-    mssg: "PHP 5,000 was withdrawn from your account.",
-    header: "Admin",
+    mssg: "PHP 6,000 was withdrawn from your account.",
+    header: "Withdraw",
   ),
   TransactionModel(
     date: "9/18",
+    mssg: "JIG account was updated",
+    header: "Account",
+  ),
+  
+  TransactionModel(
+    date: "9/15",
+    mssg: "PHP 34,000 was transferred from your account",
+    header: "Transfer Money",
+  ),
+  TransactionModel(
+    date: "9/10",
     mssg: "JIG account successfully created",
     header: "Account",
   ),

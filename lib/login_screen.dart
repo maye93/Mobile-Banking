@@ -4,7 +4,6 @@ import 'DatabaseAccounts.dart';
 import 'package:practice/base_screen.dart';
 
 class Account extends AdminAccount {
-  @override
   account() {
     return super.account();
   }

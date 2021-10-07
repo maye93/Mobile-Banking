@@ -1,11 +1,19 @@
-import 'package:practice/transfer.dart';
+import 'transfer.dart';
 
-class AdminAccount {
+class UpdateBalance extends Variables {
+  money() {
+    return super.money();
+  }
+}
+
+class AdminAccount{
   String _privAcc = "admin";
   String _privPass = "admin";
-  int _privBalance = 100000;
+  static int _privBalance = 100000;
   String _privCard = "1234 5678 9000";
-  String _privExp = "12/34";
+  String _privExpiry = "12/34";
+  int _transferMoney = UpdateBalance().money();
+  int loop = 0;
 
   account() {
     return _privAcc;
@@ -16,6 +24,7 @@ class AdminAccount {
   }
 
   balance() {
+    _privBalance -= _transferMoney;
     return _privBalance;
   }
 
@@ -23,7 +32,7 @@ class AdminAccount {
     return _privCard;
   }
 
-  exp() {
-    return _privExp;
+  expiry() {
+    return _privExpiry;
   }
 }

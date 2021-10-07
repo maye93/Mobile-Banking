@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:practice/AccountBalance.dart';
 import 'package:practice/base_screen.dart';
 import 'package:practice/transfer.dart';
-// import 'package:practice/main.dart';
 import 'package:intl/intl.dart';
 
-var f = NumberFormat('####,#####,###');
+var f = NumberFormat('####,####,####');
 
 class ConfirmScreen extends StatefulWidget {
   const ConfirmScreen({Key? key}) : super(key: key);
@@ -35,7 +33,7 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
                   ))),
           Container(
               alignment: Alignment.topLeft,
-              child: Text("PHP " + Variables.moneyTransfer.toString(),
+              child: Text("PHP "+Variables().money().toString(),
                   style: TextStyle(
                     decoration: TextDecoration.none,
                     fontFamily: 'Glacial Bold',

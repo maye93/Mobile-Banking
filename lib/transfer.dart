@@ -2,39 +2,45 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
-
-import 'package:practice/confirmation_screen.dart';
 import 'DatabaseAccounts.dart';
+import 'confirmation_screen.dart';
 
-class GetMoney extends AdminAccount {
-  @override
+class Variables {
+  static int moneyTransfer = 0;
+  static int transferAccDetails = 0;
+  static String transferNotes = "";
+  
+  money(){
+    return moneyTransfer;
+  }
+}
+
+class PrivateAccount extends AdminAccount {
   balance() {
     return super.balance();
   }
 }
 
-class Variables extends AdminAccount {
-  static String moneyTransfer = "";
-  static int transferAccDetails = 0;
-  static String transferNotes = "";
-  static double remainingBalance = 100000;
-  static double totalMoney =
-      AdminAccount().balance() - double.parse(moneyTransfer);
-}
-
 var f = NumberFormat('###,###');
 
-class TransferMoneyScreen extends StatelessWidget {
-  TransferMoneyScreen({Key? key}) : super(key: key);
+
+class TransferMoneyScreen extends StatefulWidget {
+  const TransferMoneyScreen({Key? key}) : super(key: key);
+
+  @override
+  TransferMoney createState() {
+    return TransferMoney();
+  }
+}
+
+class TransferMoney extends State<TransferMoneyScreen> {
 
   // var amount;
   final userTransferAmount = TextEditingController();
   final transferCardDetails = TextEditingController();
   final transferNote = TextEditingController();
-  final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
+  final _formkey = GlobalKey<FormState>();
   final InputError = SnackBar(content: Text('Invalid credentials'));
-
-  // b = privBalance;
 
   @override
   Widget build(BuildContext context) {
@@ -95,16 +101,18 @@ class TransferMoneyScreen extends StatelessWidget {
 
                     /////////////////////// BALANCE ////////////////////////
                     Positioned(
-                        top: 270,
-                        left: 55,
-                        child:
-                            Text("PHP " + Variables.remainingBalance.toString(),
-                                style: TextStyle(
-                                  decoration: TextDecoration.none,
-                                  fontFamily: 'Glacial',
-                                  color: const Color(0xFFE58B8E),
-                                  fontSize: 50,
-                                ))),
+                      top: 270,
+                      left: 55,
+                      child: Text(
+                        "PHP " + f.format(PrivateAccount().balance()).toString(),
+                        style: TextStyle(
+                          decoration: TextDecoration.none,
+                          fontFamily: 'Glacial',
+                          color: const Color(0xFFE58B8E),
+                          fontSize: 50,
+                        )
+                      )
+                    ),
 
                     //////////////////// TRANSFER AMOUNT ////////////////////
                     Positioned(
@@ -143,11 +151,7 @@ class TransferMoneyScreen extends StatelessWidget {
                                 return 'Please Specify amount';
                               } else if (int.tryParse(value)! < 200) {
                                 return 'Amount must not be less than Php 200.00';
-                              } else if (int.tryParse(value)! >
-                                  AdminAccount().balance()) {
-                                return 'Insufficient funds';
                               } else {
-                                // amount = value;
                                 return null;
                               }
                             },
@@ -247,28 +251,17 @@ class TransferMoneyScreen extends StatelessWidget {
                             child: ElevatedButton(
                               child: Text('Confirm'),
                               onPressed: () {
-                                GetMoney().balance();
                                 if (_formkey.currentState!.validate()) {
-                                  Variables.moneyTransfer =
-                                      (double.parse(userTransferAmount.text)
-                                          .toStringAsFixed(2));
-                                  Variables.transferAccDetails =
-                                      int.parse(transferCardDetails.text);
-                                  Variables.remainingBalance =
-                                      Variables.totalMoney -
-                                          double.parse(Variables.moneyTransfer);
-
+                                  Variables.moneyTransfer = int.parse(userTransferAmount.text);
+                                  Variables.transferAccDetails = int.parse(transferCardDetails.text);
                                   if (transferNote.text.isEmpty) {
-                                    Variables.transferNotes =
-                                        "It looks like you haven't left a note...";
+                                    Variables.transferNotes = "It looks like you haven't left a note...";
                                   } else {
                                     Variables.transferNotes = transferNote.text;
                                   }
                                   Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              ConfirmScreen()));
+                                    context,
+                                    MaterialPageRoute(builder: (context) => ConfirmScreen()));
                                 } else {
                                   InputError;
                                 }

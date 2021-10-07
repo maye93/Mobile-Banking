@@ -2,41 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:practice/transaction_card.dart';
 import 'package:practice/transaction_data.dart';
 import 'package:intl/intl.dart';
-import 'package:practice/transfer.dart';
 import 'transaction_card.dart';
 import 'transaction_data.dart';
 import 'DatabaseAccounts.dart';
 
-class GetAccount extends AdminAccount {
-  @override
+class PrivateAccount extends AdminAccount {
   account() {
     return super.account();
   }
-}
 
-class GetCard extends AdminAccount {
-  @override
   card() {
     return super.card();
   }
-}
 
-class GetExp extends AdminAccount {
-  @override
-  exp() {
-    return super.exp();
-  }
-}
-
-class GetBalance extends AdminAccount {
-  @override
-  balance() {
-    return super.balance();
+  expiry() {
+    return super.expiry();
   }
 }
 
 var f = NumberFormat('###,###');
-var x = Variables.totalMoney.toString();
 
 class DashBoard extends StatefulWidget {
   const DashBoard({Key? key}) : super(key: key);
@@ -51,7 +35,6 @@ class _DashBoardState extends State<DashBoard> {
     return Scaffold(
         body: Center(
             child: SingleChildScrollView(
-                physics: NeverScrollableScrollPhysics(),
                 reverse: true,
                 child: Stack(alignment: Alignment.center, children: [
                   ////////////////////// BACKGROUND //////////////////////
@@ -77,7 +60,7 @@ class _DashBoardState extends State<DashBoard> {
                   Positioned(
                       top: 155,
                       left: 50,
-                      child: Text(GetAccount().account(),
+                      child: Text(PrivateAccount().account(),
                           style: TextStyle(
                             decoration: TextDecoration.none,
                             fontFamily: 'Glacial',
@@ -134,7 +117,7 @@ class _DashBoardState extends State<DashBoard> {
                   Positioned(
                       top: 340,
                       left: 40,
-                      child: Text(GetCard().card(),
+                      child: Text(PrivateAccount().card(),
                           style: TextStyle(
                             decoration: TextDecoration.none,
                             fontFamily: 'Glacial',
@@ -147,43 +130,17 @@ class _DashBoardState extends State<DashBoard> {
                   Positioned(
                       top: 375,
                       left: 40,
-                      child: Text(GetExp().exp(),
+                      child: Text(PrivateAccount().expiry(),
                           style: TextStyle(
                             decoration: TextDecoration.none,
                             fontFamily: 'Glacial',
                             color: const Color(0xFFE58B8E),
                             fontSize: 25,
                           ))),
-
-                  ////////////////////// BALANCE TITLE //////////////////////
-                  Positioned(
-                      top: 435,
-                      left: 40,
-                      child: Text("BALANCE",
-                          style: TextStyle(
-                            decoration: TextDecoration.none,
-                            fontFamily: 'Glacial Bold',
-                            color: const Color(0xFF231D25),
-                            fontSize: 20,
-                            letterSpacing: 2,
-                          ))),
-
-                  ////////////////////////// BALANCE /////////////////////////
-                  Positioned(
-                      top: 450,
-                      child:
-                          Text("PHP " + Variables.remainingBalance.toString(),
-                              style: TextStyle(
-                                decoration: TextDecoration.none,
-                                fontFamily: 'Glacial',
-                                color: const Color(0xFFFE971A),
-                                fontSize: 60,
-                              ))),
-
+                          
                   //////////////////// RECENT TRANSACTIONS ///////////////////
                   Positioned(
-                      top: 530,
-                      left: 20,
+                      top: 430,
                       child: Text("RECENT TRANSACTIONS",
                           style: TextStyle(
                             decoration: TextDecoration.none,
@@ -198,7 +155,7 @@ class _DashBoardState extends State<DashBoard> {
                       alignment: Alignment.bottomCenter,
                       child: Padding(
                           padding: const EdgeInsets.only(
-                              top: 480, left: 7, right: 7),
+                              top: 400, left: 7, right: 7),
                           child: ListView.separated(
                               itemCount: myTransactions.length,
                               shrinkWrap: true,
