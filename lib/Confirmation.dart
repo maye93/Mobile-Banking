@@ -11,40 +11,43 @@ class Confirmation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          title: Title(color: Colors.black, child: Text("hi")),
+        ),
         body: Center(
             child: Stepper(
-      controlsBuilder: (BuildContext context,
-          {VoidCallback? onStepContinue, VoidCallback? onStepCancel}) {
-        return Row(
-          children: <Widget>[
-            TextButton(
-              onPressed: onStepContinue,
-              child: const Text('NEXT'),
+          controlsBuilder: (BuildContext context,
+              {VoidCallback? onStepContinue, VoidCallback? onStepCancel}) {
+            return Row(
+              children: <Widget>[
+                TextButton(
+                  onPressed: onStepContinue,
+                  child: const Text('NEXT'),
+                ),
+                TextButton(
+                  onPressed: onStepCancel,
+                  child: const Text('EXIT'),
+                ),
+              ],
+            );
+          },
+          steps: const <Step>[
+            Step(
+              title: Text('A'),
+              content: SizedBox(
+                width: 100.0,
+                height: 100.0,
+              ),
             ),
-            TextButton(
-              onPressed: onStepCancel,
-              child: const Text('EXIT'),
+            Step(
+              title: Text('B'),
+              content: SizedBox(
+                width: 100.0,
+                height: 100.0,
+                child: Text("hello"),
+              ),
             ),
           ],
-        );
-      },
-      steps: const <Step>[
-        Step(
-          title: Text('A'),
-          content: SizedBox(
-            width: 100.0,
-            height: 100.0,
-          ),
-        ),
-        Step(
-          title: Text('B'),
-          content: SizedBox(
-            width: 100.0,
-            height: 100.0,
-            child: Text("hello"),
-          ),
-        ),
-      ],
-    )));
+        )));
   }
 }
