@@ -91,8 +91,15 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
                       fontFamily: 'Glacial Bold',
                       color: const Color(0xFFFE971A),
                       fontSize: 25,
-                    )))
-          ],
+                    ))),
+            Positioned(
+                        top: 723,
+                        child: SizedBox(
+                            height: 50,
+                            width: 250,
+                            child: ElevatedButton(
+                              child: Text('Confirm'),
+                            ))),
         ))
   ];
   StepperType stepperType = StepperType.horizontal;
