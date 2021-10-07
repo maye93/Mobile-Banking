@@ -142,12 +142,18 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
         body: Column(
           children: <Widget>[
             Expanded(
-              child: Stepper(
-                steps: steps,
-                currentStep: currentStep,
-                onStepContinue: next,
-                onStepCancel: cancel,
-                onStepTapped: (step) => goTo(step),
+              child: Theme(
+                data: ThemeData(
+                    accentColor: Colors.orange,
+                    primarySwatch: Colors.orange,
+                    colorScheme: ColorScheme.light(primary: Colors.orange)),
+                child: Stepper(
+                  steps: steps,
+                  currentStep: currentStep,
+                  onStepContinue: next,
+                  onStepCancel: cancel,
+                  onStepTapped: (step) => goTo(step),
+                ),
               ),
             )
           ],
