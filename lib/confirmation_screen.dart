@@ -11,21 +11,32 @@ class ConfirmScreen extends StatefulWidget {
 class _ConfirmScreenState extends State<ConfirmScreen> {
   List<Step> steps = [
     Step(
-      title: const Text("test"),
+      title: const Text("Step"),
       isActive: true,
       state: StepState.complete,
       content: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          Text("Blah blah"),
-          Text("Blah Blah"),
-          // TextFormField(
-          //   decoration: InputDecoration(labelText: "test"),
-          // ),
-          // TextFormField(
-          //   decoration: InputDecoration(labelText: "test"),
-          // ),
+          Container(
+            alignment: Alignment.topLeft,
+            child: Text("Blah blah",
+                style: TextStyle(
+                  decoration: TextDecoration.none,
+                  fontFamily: 'Glacial Bold',
+                  color: const Color(0xFFFE971A),
+                  fontSize: 25,
+                )),
+          ),
+          Container(
+              alignment: Alignment.topLeft,
+              child: Text("Blah blah",
+                  style: TextStyle(
+                    decoration: TextDecoration.none,
+                    fontFamily: 'Glacial Bold',
+                    color: const Color(0xFFFE971A),
+                    fontSize: 25,
+                  )))
         ],
       ),
     ),
@@ -35,12 +46,25 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
         title: const Text("Test"),
         content: Column(
           children: <Widget>[
-            TextFormField(
-              decoration: InputDecoration(labelText: "Test"),
+            Container(
+              alignment: Alignment.topLeft,
+              child: Text("Blah blah",
+                  style: TextStyle(
+                    decoration: TextDecoration.none,
+                    fontFamily: 'Glacial Bold',
+                    color: const Color(0xFFFE971A),
+                    fontSize: 25,
+                  )),
             ),
-            TextFormField(
-              decoration: InputDecoration(labelText: "test"),
-            )
+            Container(
+                alignment: Alignment.topLeft,
+                child: Text("Blah blah",
+                    style: TextStyle(
+                      decoration: TextDecoration.none,
+                      fontFamily: 'Glacial Bold',
+                      color: const Color(0xFFFE971A),
+                      fontSize: 25,
+                    )))
           ],
         ))
   ];
