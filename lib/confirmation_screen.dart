@@ -109,7 +109,11 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
   cancel() {
     if (currentStep > 0) {
       goTo(currentStep - 1);
+    } else {
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => TransferMoneyScreen()));
     }
+    ;
   }
 
   goTo(int step) {
