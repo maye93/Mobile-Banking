@@ -36,6 +36,7 @@ class GetBalance extends AdminAccount {
 }
 
 var f = NumberFormat('###,###');
+var x = Variables.totalMoney.toString();
 
 class DashBoard extends StatefulWidget {
   const DashBoard({Key? key}) : super(key: key);
@@ -170,13 +171,14 @@ class _DashBoardState extends State<DashBoard> {
                   ////////////////////////// BALANCE /////////////////////////
                   Positioned(
                       top: 450,
-                      child: Text("PHP " + Variables.totalMoney.toString(),
-                          style: TextStyle(
-                            decoration: TextDecoration.none,
-                            fontFamily: 'Glacial',
-                            color: const Color(0xFFFE971A),
-                            fontSize: 60,
-                          ))),
+                      child:
+                          Text("PHP " + Variables.remainingBalance.toString(),
+                              style: TextStyle(
+                                decoration: TextDecoration.none,
+                                fontFamily: 'Glacial',
+                                color: const Color(0xFFFE971A),
+                                fontSize: 60,
+                              ))),
 
                   //////////////////// RECENT TRANSACTIONS ///////////////////
                   Positioned(

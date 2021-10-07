@@ -104,7 +104,6 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
   bool complete = false;
 
   next() {
-    var x = 0;
     currentStep + 1 != steps.length
         ? goTo(currentStep + 1)
         : setState(() => complete = true);

@@ -17,6 +17,7 @@ class Variables extends AdminAccount {
   static String moneyTransfer = "";
   static int transferAccDetails = 0;
   static String transferNotes = "";
+  static double remainingBalance = 100000;
   static double totalMoney =
       AdminAccount().balance() - double.parse(moneyTransfer);
 }
@@ -96,14 +97,14 @@ class TransferMoneyScreen extends StatelessWidget {
                     Positioned(
                         top: 270,
                         left: 55,
-                        child: Text(
-                            "PHP " + f.format(GetMoney().balance()).toString(),
-                            style: TextStyle(
-                              decoration: TextDecoration.none,
-                              fontFamily: 'Glacial',
-                              color: const Color(0xFFE58B8E),
-                              fontSize: 50,
-                            ))),
+                        child:
+                            Text("PHP " + Variables.remainingBalance.toString(),
+                                style: TextStyle(
+                                  decoration: TextDecoration.none,
+                                  fontFamily: 'Glacial',
+                                  color: const Color(0xFFE58B8E),
+                                  fontSize: 50,
+                                ))),
 
                     //////////////////// TRANSFER AMOUNT ////////////////////
                     Positioned(
@@ -142,6 +143,9 @@ class TransferMoneyScreen extends StatelessWidget {
                                 return 'Please Specify amount';
                               } else if (int.tryParse(value)! < 200) {
                                 return 'Amount must not be less than Php 200.00';
+                              } else if (int.tryParse(value)! >
+                                  AdminAccount().balance()) {
+                                return 'Insufficient funds';
                               } else {
                                 // amount = value;
                                 return null;
@@ -250,6 +254,9 @@ class TransferMoneyScreen extends StatelessWidget {
                                           .toStringAsFixed(2));
                                   Variables.transferAccDetails =
                                       int.parse(transferCardDetails.text);
+                                  Variables.remainingBalance =
+                                      Variables.totalMoney -
+                                          double.parse(Variables.moneyTransfer);
 
                                   if (transferNote.text.isEmpty) {
                                     Variables.transferNotes =
