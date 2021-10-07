@@ -1,3 +1,5 @@
+import 'package:practice/transfer.dart';
+
 class AdminAccount {
   String _privAcc = "admin";
   String _privPass = "admin";

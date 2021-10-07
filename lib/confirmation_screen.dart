@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:practice/AccountBalance.dart';
+import 'package:practice/base_screen.dart';
 import 'package:practice/transfer.dart';
 // import 'package:practice/main.dart';
+import 'package:intl/intl.dart';
+
+var f = NumberFormat('####,#####,###');
 
 class ConfirmScreen extends StatefulWidget {
   const ConfirmScreen({Key? key}) : super(key: key);
@@ -58,7 +63,7 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
             ),
             Container(
                 alignment: Alignment.topLeft,
-                child: Text(Variables.transferAccDetails.toString(),
+                child: Text(f.format(Variables.transferAccDetails).toString(),
                     style: TextStyle(
                       decoration: TextDecoration.none,
                       fontFamily: 'Glacial Bold',
@@ -71,36 +76,27 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
         isActive: true,
         state: StepState.complete,
         title: const Text("Notes"),
-        content: Column(
-          children: <Widget>[
-            Container(
+        content: Column(children: <Widget>[
+          Container(
+            alignment: Alignment.topLeft,
+            child: Text("Notes: ",
+                style: TextStyle(
+                  decoration: TextDecoration.none,
+                  fontFamily: 'Glacial Bold',
+                  color: const Color(0xFFFE971A),
+                  fontSize: 15,
+                )),
+          ),
+          Container(
               alignment: Alignment.topLeft,
-              child: Text("Notes: ",
+              child: Text(Variables.transferNotes,
                   style: TextStyle(
                     decoration: TextDecoration.none,
                     fontFamily: 'Glacial Bold',
                     color: const Color(0xFFFE971A),
-                    fontSize: 15,
-                  )),
-            ),
-            Container(
-                alignment: Alignment.topLeft,
-                child: Text(Variables.transferNotes,
-                    style: TextStyle(
-                      decoration: TextDecoration.none,
-                      fontFamily: 'Glacial Bold',
-                      color: const Color(0xFFFE971A),
-                      fontSize: 25,
-                    ))),
-            Positioned(
-                        top: 723,
-                        child: SizedBox(
-                            height: 50,
-                            width: 250,
-                            child: ElevatedButton(
-                              child: Text('Confirm'),
-                            ))),
-        ))
+                    fontSize: 25,
+                  ))),
+        ]))
   ];
   StepperType stepperType = StepperType.horizontal;
 
@@ -108,9 +104,14 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
   bool complete = false;
 
   next() {
+    var x = 0;
     currentStep + 1 != steps.length
         ? goTo(currentStep + 1)
         : setState(() => complete = true);
+    if (complete) {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => BaseScreen()));
+    }
   }
 
   cancel() {
@@ -146,12 +147,11 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
           centerTitle: true,
           title: Text("Confirmation"),
         ),
-        body: Column(
+        body: Stack(
           children: <Widget>[
             Expanded(
               child: Theme(
                 data: ThemeData(
-                    accentColor: Colors.orange,
                     primarySwatch: Colors.orange,
                     colorScheme: ColorScheme.light(primary: Colors.orange)),
                 child: Stepper(
