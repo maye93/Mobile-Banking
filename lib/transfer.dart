@@ -5,16 +5,6 @@ import 'package:intl/intl.dart';
 import 'DatabaseAccounts.dart';
 import 'confirmation_screen.dart';
 
-class Variables {
-  static int moneyTransfer = 0;
-  static int transferAccDetails = 0;
-  static String transferNotes = "";
-  
-  money(){
-    return moneyTransfer;
-  }
-}
-
 class PrivateAccount extends AdminAccount {
   balance() {
     return super.balance();
@@ -23,6 +13,19 @@ class PrivateAccount extends AdminAccount {
 
 var f = NumberFormat('###,###');
 
+class Variables {
+  static int moneyTransfer = 0;
+  static int transferAccDetails = 0;
+  static String transferNotes = "";
+  
+  money(){
+    return moneyTransfer;
+  }
+
+  number(){
+    return transferAccDetails;
+  }
+}
 
 class TransferMoneyScreen extends StatefulWidget {
   const TransferMoneyScreen({Key? key}) : super(key: key);
@@ -41,6 +44,12 @@ class TransferMoney extends State<TransferMoneyScreen> {
   final transferNote = TextEditingController();
   final _formkey = GlobalKey<FormState>();
   final InputError = SnackBar(content: Text('Invalid credentials'));
+  final String currentBalance = PrivateAccount().balance().toString();
+
+  currentMoney(){
+    int money = int.parse(currentBalance);
+    return money;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -104,7 +113,7 @@ class TransferMoney extends State<TransferMoneyScreen> {
                       top: 270,
                       left: 55,
                       child: Text(
-                        "PHP " + f.format(PrivateAccount().balance()).toString(),
+                        "PHP " + f.format(currentMoney()).toString(),
                         style: TextStyle(
                           decoration: TextDecoration.none,
                           fontFamily: 'Glacial',
@@ -148,9 +157,11 @@ class TransferMoney extends State<TransferMoneyScreen> {
                             controller: userTransferAmount,
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return 'Please Specify amount';
+                                return 'Please specify transfer amount.';
                               } else if (int.tryParse(value)! < 200) {
-                                return 'Amount must not be less than Php 200.00';
+                                return 'Amount must be more than Php 200.';
+                               } else if (int.tryParse(value)! > currentMoney()) {
+                                return 'Amount must be less than Php '+f.format(currentMoney()).toString()+'.';
                               } else {
                                 return null;
                               }
@@ -254,11 +265,7 @@ class TransferMoney extends State<TransferMoneyScreen> {
                                 if (_formkey.currentState!.validate()) {
                                   Variables.moneyTransfer = int.parse(userTransferAmount.text);
                                   Variables.transferAccDetails = int.parse(transferCardDetails.text);
-                                  if (transferNote.text.isEmpty) {
-                                    Variables.transferNotes = "It looks like you haven't left a note...";
-                                  } else {
-                                    Variables.transferNotes = transferNote.text;
-                                  }
+                                  Variables.transferNotes = transferNote.text;
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(builder: (context) => ConfirmScreen()));
