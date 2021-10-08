@@ -23,7 +23,9 @@ class Variables {
   }
 
   number(){
-    return transferAccDetails;
+    var value = Variables.transferAccDetails.toString().replaceAllMapped(RegExp(r".{4}"), 
+    (match) => "${match.group(0)} ");
+    return value;
   }
 }
 
