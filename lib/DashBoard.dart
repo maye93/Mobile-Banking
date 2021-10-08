@@ -39,7 +39,8 @@ class _DashBoardState extends State<DashBoard> {
                 child: Stack(alignment: Alignment.center, children: [
                   ////////////////////// BACKGROUND //////////////////////
                   Container(
-                    height: MediaQuery.of(context).size.height,
+                    alignment: Alignment.center,
+                    height: 825,
                     width: MediaQuery.of(context).size.width,
                     color: const Color(0xFF231D25),
                   ),
@@ -137,7 +138,7 @@ class _DashBoardState extends State<DashBoard> {
                             color: const Color(0xFFE58B8E),
                             fontSize: 25,
                           ))),
-                          
+
                   //////////////////// RECENT TRANSACTIONS ///////////////////
                   Positioned(
                       top: 430,

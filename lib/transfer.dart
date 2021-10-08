@@ -17,14 +17,15 @@ class Variables {
   static int moneyTransfer = 0;
   static int transferAccDetails = 0;
   static String transferNotes = "";
-  
-  money(){
+
+  money() {
     return moneyTransfer;
   }
 
-  number(){
-    var value = Variables.transferAccDetails.toString().replaceAllMapped(RegExp(r".{4}"), 
-    (match) => "${match.group(0)} ");
+  number() {
+    var value = Variables.transferAccDetails
+        .toString()
+        .replaceAllMapped(RegExp(r".{4}"), (match) => "${match.group(0)} ");
     return value;
   }
 }
@@ -39,7 +40,6 @@ class TransferMoneyScreen extends StatefulWidget {
 }
 
 class TransferMoney extends State<TransferMoneyScreen> {
-
   // var amount;
   final userTransferAmount = TextEditingController();
   final transferCardDetails = TextEditingController();
@@ -48,7 +48,7 @@ class TransferMoney extends State<TransferMoneyScreen> {
   final InputError = SnackBar(content: Text('Invalid credentials'));
   final String currentBalance = PrivateAccount().balance().toString();
 
-  currentMoney(){
+  currentMoney() {
     int money = int.parse(currentBalance);
     return money;
   }
@@ -112,18 +112,16 @@ class TransferMoney extends State<TransferMoneyScreen> {
 
                     /////////////////////// BALANCE ////////////////////////
                     Positioned(
-                      top: 270,
-                      left: 55,
-                      child: Text(
-                        "PHP " + f.format(currentMoney()).toString(),
-                        style: TextStyle(
-                          decoration: TextDecoration.none,
-                          fontFamily: 'Glacial',
-                          color: const Color(0xFFE58B8E),
-                          fontSize: 50,
-                        )
-                      )
-                    ),
+                        top: 270,
+                        left: 55,
+                        child:
+                            Text("PHP " + f.format(currentMoney()).toString(),
+                                style: TextStyle(
+                                  decoration: TextDecoration.none,
+                                  fontFamily: 'Glacial',
+                                  color: const Color(0xFFE58B8E),
+                                  fontSize: 50,
+                                ))),
 
                     //////////////////// TRANSFER AMOUNT ////////////////////
                     Positioned(
@@ -162,8 +160,11 @@ class TransferMoney extends State<TransferMoneyScreen> {
                                 return 'Please specify transfer amount.';
                               } else if (int.tryParse(value)! < 200) {
                                 return 'Amount must be more than Php 200.';
-                               } else if (int.tryParse(value)! > currentMoney()) {
-                                return 'Amount must be less than Php '+f.format(currentMoney()).toString()+'.';
+                              } else if (int.tryParse(value)! >
+                                  currentMoney()) {
+                                return 'Amount must be less than Php ' +
+                                    f.format(currentMoney()).toString() +
+                                    '.';
                               } else {
                                 return null;
                               }
@@ -237,32 +238,30 @@ class TransferMoney extends State<TransferMoneyScreen> {
 
                     ////////////////////// NOTE TEXTFIELD /////////////////////
                     Positioned(
-                      top: 600,
-                      child: SizedBox(
-                        height: 300,
-                        width: 300,
-                        child: TextFormField(
-                          controller: transferNote,
-                          textAlign: TextAlign.center,
-                          inputFormatters: <TextInputFormatter>[
-                            LengthLimitingTextInputFormatter(40)
-                          ],
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(),
-                            hintText: 'What would you like to say?',
-                            hintStyle: TextStyle(color: Colors.grey),
-                            fillColor: Colors.white,
-                            filled: true,
-                            contentPadding:
-                              EdgeInsets.symmetric(vertical: 40),
-                          ),
-                        )
-                      )
-                    ),
+                        top: 600,
+                        child: SizedBox(
+                            height: 300,
+                            width: 300,
+                            child: TextFormField(
+                              controller: transferNote,
+                              textAlign: TextAlign.center,
+                              inputFormatters: <TextInputFormatter>[
+                                LengthLimitingTextInputFormatter(40)
+                              ],
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(),
+                                hintText: 'What would you like to say?',
+                                hintStyle: TextStyle(color: Colors.grey),
+                                fillColor: Colors.white,
+                                filled: true,
+                                contentPadding:
+                                    EdgeInsets.symmetric(vertical: 40),
+                              ),
+                            ))),
 
                     ////////////////////// CONFIRM BUTTON /////////////////////
                     Positioned(
-                        top: 723,
+                        top: 715,
                         child: SizedBox(
                             height: 50,
                             width: 250,
@@ -270,12 +269,16 @@ class TransferMoney extends State<TransferMoneyScreen> {
                               child: Text('Confirm'),
                               onPressed: () {
                                 if (_formkey.currentState!.validate()) {
-                                  Variables.moneyTransfer = int.parse(userTransferAmount.text);
-                                  Variables.transferAccDetails = int.parse(transferCardDetails.text);
+                                  Variables.moneyTransfer =
+                                      int.parse(userTransferAmount.text);
+                                  Variables.transferAccDetails =
+                                      int.parse(transferCardDetails.text);
                                   Variables.transferNotes = transferNote.text;
                                   Navigator.push(
-                                    context,
-                                    MaterialPageRoute(builder: (context) => ConfirmScreen()));
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              ConfirmScreen()));
                                 } else {
                                   InputError;
                                 }
