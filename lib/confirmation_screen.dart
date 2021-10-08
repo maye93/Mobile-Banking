@@ -23,23 +23,27 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Container(
-              alignment: Alignment.topLeft,
-              child: Text("Transfer Amount",
-                  style: TextStyle(
-                    decoration: TextDecoration.none,
-                    fontFamily: 'Glacial Bold',
-                    color: const Color(0xFFFE971A),
-                    fontSize: 15,
-                  ))),
+            alignment: Alignment.topLeft,
+            child: Text("Transfer Amount",
+              style: TextStyle(
+                decoration: TextDecoration.none,
+                fontFamily: 'Glacial Bold',
+                color: const Color(0xFFFE971A),
+                fontSize: 30,
+              )
+            )
+          ),
           Container(
-              alignment: Alignment.topLeft,
-              child: Text("PHP "+f.format(Variables().money()).toString(),
-                  style: TextStyle(
-                    decoration: TextDecoration.none,
-                    fontFamily: 'Glacial Bold',
-                    color: const Color(0xFFFE971A),
-                    fontSize: 25,
-                  ))),
+            alignment: Alignment.topLeft,
+            child: Text("PHP "+f.format(Variables().money()).toString(),
+              style: TextStyle(
+                decoration: TextDecoration.none,
+                fontFamily: 'Glacial Bold',
+                color: const Color(0xFF231D25),
+                fontSize: 40,
+              )
+            )
+          ),
         ],
       ),
     ),
@@ -52,24 +56,28 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
             Container(
               alignment: Alignment.topLeft,
               child: Text("Account Number",
-                  style: TextStyle(
-                    decoration: TextDecoration.none,
-                    fontFamily: 'Glacial Bold',
-                    color: const Color(0xFFFE971A),
-                    fontSize: 15,
-                  )),
+                style: TextStyle(
+                  decoration: TextDecoration.none,
+                  fontFamily: 'Glacial Bold',
+                  color: const Color(0xFFFE971A),
+                  fontSize: 30,
+                )
+              ),
             ),
             Container(
-                alignment: Alignment.topLeft,
-                child: Text(Variables().number(),
-                    style: TextStyle(
-                      decoration: TextDecoration.none,
-                      fontFamily: 'Glacial Bold',
-                      color: const Color(0xFFFE971A),
-                      fontSize: 25,
-                    )))
+              alignment: Alignment.topLeft,
+              child: Text(Variables().number(),
+                style: TextStyle(
+                  decoration: TextDecoration.none,
+                  fontFamily: 'Glacial Bold',
+                  color: const Color(0xFF231D25),
+                  fontSize: 40,
+                )
+              )
+            )
           ],
-        )),
+        )
+      ),
     Step(
         isActive: true,
         state: StepState.complete,
@@ -78,23 +86,28 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
           Container(
             alignment: Alignment.topLeft,
             child: Text("Notes: ",
-                style: TextStyle(
-                  decoration: TextDecoration.none,
-                  fontFamily: 'Glacial Bold',
-                  color: const Color(0xFFFE971A),
-                  fontSize: 15,
-                )),
+              style: TextStyle(
+                decoration: TextDecoration.none,
+                fontFamily: 'Glacial Bold',
+                color: const Color(0xFFFE971A),
+                fontSize: 30,
+              )
+            ),
           ),
           Container(
-              alignment: Alignment.topLeft,
-              child: Text(Variables.transferNotes,
-                  style: TextStyle(
-                    decoration: TextDecoration.none,
-                    fontFamily: 'Glacial Bold',
-                    color: const Color(0xFFFE971A),
-                    fontSize: 25,
-                  ))),
-        ]))
+            alignment: Alignment.topLeft,
+            child: Text(Variables.transferNotes,
+              style: TextStyle(
+                decoration: TextDecoration.none,
+                fontFamily: 'Glacial Bold',
+                color: const Color(0xFF231D25),
+                fontSize: 40,
+              )
+            ) 
+          ),
+        ]
+      )
+    )
   ];
   StepperType stepperType = StepperType.horizontal;
 
@@ -140,8 +153,7 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
           Expanded(
             child: Theme(
               data: ThemeData(
-                  primarySwatch: Colors.orange,
-                  colorScheme: ColorScheme.light(primary: Colors.orange)),
+                colorScheme: ColorScheme.light(primary: const Color(0xFFE58B8E))),
               child: Stepper(
                 steps: steps,
                 currentStep: currentStep,

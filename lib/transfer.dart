@@ -237,23 +237,28 @@ class TransferMoney extends State<TransferMoneyScreen> {
 
                     ////////////////////// NOTE TEXTFIELD /////////////////////
                     Positioned(
-                        top: 600,
-                        child: SizedBox(
-                            height: 300,
-                            width: 300,
-                            child: TextFormField(
-                              controller: transferNote,
-                              textAlign: TextAlign.center,
-                              decoration: InputDecoration(
-                                border: OutlineInputBorder(),
-                                hintText: 'What would you like to say?',
-                                hintStyle: TextStyle(color: Colors.grey),
-                                fillColor: Colors.white,
-                                filled: true,
-                                contentPadding:
-                                    EdgeInsets.symmetric(vertical: 40),
-                              ),
-                            ))),
+                      top: 600,
+                      child: SizedBox(
+                        height: 300,
+                        width: 300,
+                        child: TextFormField(
+                          controller: transferNote,
+                          textAlign: TextAlign.center,
+                          inputFormatters: <TextInputFormatter>[
+                            LengthLimitingTextInputFormatter(40)
+                          ],
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(),
+                            hintText: 'What would you like to say?',
+                            hintStyle: TextStyle(color: Colors.grey),
+                            fillColor: Colors.white,
+                            filled: true,
+                            contentPadding:
+                              EdgeInsets.symmetric(vertical: 40),
+                          ),
+                        )
+                      )
+                    ),
 
                     ////////////////////// CONFIRM BUTTON /////////////////////
                     Positioned(
